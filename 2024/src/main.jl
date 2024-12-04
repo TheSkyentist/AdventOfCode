@@ -33,7 +33,7 @@ function main()
     download(day, year)
 
     # Build module file path
-    module_path = joinpath(@__DIR__, "julia", "day$day.jl")
+    module_path = joinpath("src","julia", "day$day.jl")
 
     # Check if the file exists
     if !isfile(module_path)
@@ -42,29 +42,18 @@ function main()
     end
 
     # Dynamically include the module
-    include(module_path)
-
-    # Get the module name dynamically
-    module_name = Symbol("Day$day")
-
-    # Check if the module is loaded
-    if !haskey(Base.loaded_modules, module_name)
-        println("Julia code for day $day not found.")
-        return
-    end
-
-    # Access the module
-    mod = Base.require(module_name)
+    include("julia/day$day.jl")
+    module_name = Symbol("Day")
+    solution_module = eval(module_name)
 
     # Check if the solve function exists
-    if !hasproperty(mod, :solve)
+    if !isdefined(solution_module, :solve)
         println("Julia code for day $day does not have a solve function.")
         return
     end
 
-    # Call the solve function
-    solve = getproperty(mod, :solve)
-    solve()
+    # Call the solve function using Base.invokelatest
+    Base.invokelatest(getfield(solution_module, :solve))
 end
 
 # Run the main function
