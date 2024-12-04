@@ -6,7 +6,7 @@ use reqwest::blocking::Client;
 pub fn download(day: u32, year: u32) -> () {
 
     // File where data will be stored
-    let file: String = format!("data/{}.rs.txt", day);
+    let file: String = format!("data/input{}.rs.txt", day);
 
     // Check if file exists
     if std::path::Path::new(&file).exists() {
