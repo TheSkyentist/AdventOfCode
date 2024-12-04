@@ -10,3 +10,6 @@ data/
 
 # Cargo build
 target/
+
+# Python build
+__pycache__/
