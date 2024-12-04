@@ -1,20 +1,22 @@
-module Day
+module Day1
 
-export solve
+    __precompile__()
 
-function part1()
-    println("Not implemented yet")
-end
+    export solve
 
-function part2()
-    println("Not implemented yet")
-end
+    # function 
 
-export solve
+    function part1()
+        println("Not implemented yet")
+    end
+
+    function part2()
+        println("Not implemented yet")
+    end
 
     function solve()
         part1()
         part2()
     end
-    
+
 end

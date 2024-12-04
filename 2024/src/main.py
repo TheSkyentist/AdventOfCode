@@ -1,8 +1,6 @@
 # Import packages
 import argparse
-import importlib
-from python.download import download
-
+from python import download, run_day
 
 def main():
     # Create parser
@@ -16,23 +14,10 @@ def main():
     args = parser.parse_args()
 
     # Download data
-    download(args.day, args.year)
+    if download(args.day, args.year):
 
-    # Dynamically import the solution module
-    try:
-        module_name = f'python.day{args.day}'
-        solution_module = importlib.import_module(module_name)
-
-        # Call the solve() function
-        if hasattr(solution_module, 'solve'):
-            solution_module.solve()
-        else:
-            print(f'Python solve not implemented for day {args.day}.')
-    except ModuleNotFoundError:
-        print(f'Python code for day {args.day} not found.')
-    except Exception as e:
-        print(f'An error occurred for python code for day {args.day}, {e}.')
-
+        # Run Solution
+        run_day(args.day)
 
 if __name__ == '__main__':
     main()

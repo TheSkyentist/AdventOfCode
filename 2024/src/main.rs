@@ -27,8 +27,8 @@ fn main() -> () {
     }
 
     // Download data
-    download(day, year);
-
-    // Run the solution for the specified day
-    run_day(day);
+    if download(day, year) {
+        // Run the solution for the specified day
+        run_day(day);
+    }
 }

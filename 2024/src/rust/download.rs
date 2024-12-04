@@ -3,7 +3,7 @@
 // Modules to use
 use reqwest::blocking::Client;
 
-pub fn download(day: u32, year: u32) -> () {
+pub fn download(day: u32, year: u32) -> bool {
 
     // File where data will be stored
     let file: String = format!("data/input{}.rs.txt", day);
@@ -11,7 +11,7 @@ pub fn download(day: u32, year: u32) -> () {
     // Check if file exists
     if std::path::Path::new(&file).exists() {
         println!("Rust data for day {} already exists.", day);
-        return;
+        return true;
     }
 
     // URL to download data from
@@ -36,13 +36,16 @@ pub fn download(day: u32, year: u32) -> () {
                 // Write data to file
                 std::fs::write(&file, r.text().unwrap()).unwrap();
                 println!("Rust data for day {} downloaded successfully.", day);
+                return true;
             } else {
                 eprintln!("Rust data for day {} not available.", day);
+                return false;
             }
         },
         // Otherwise print the error
         Err(e) => {
             eprintln!("Error downloading Rust data for day {}: {}", day, e);
+            return false;
         }
     }
 

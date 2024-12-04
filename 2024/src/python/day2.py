@@ -14,8 +14,7 @@ def isSafe(row: np.ndarray) -> bool:
     """
     Check if row is safe
     """
-    diff = np.diff(row)
-    absdiff = np.abs(diff)
+    absdiff = np.abs(diff := np.diff(row))
 
     return np.logical_and.reduce(
         [np.all(absdiff >= 1), np.all(absdiff <= 3), np.unique(np.sign(diff)).size == 1]

@@ -13,7 +13,7 @@ def download(day: int, year: int = 2024) -> None:
 
     if os.path.exists(file):
         print(f'Python data for day {day} already downloaded.')
-        return
+        return True
 
     # URL to download data from
     url = f'https://adventofcode.com/{year}/day/{day}/input'
@@ -27,13 +27,15 @@ def download(day: int, year: int = 2024) -> None:
         response = requests.get(url, cookies={'session': session_cookie})
     except Exception as e:
         print(f'Error downloading Python data for day {day}: {e}')
+        return False
 
     # Check if response is 404
     if response.status_code == 404:
         print(f'Python data for day {day} is not available.')
-        return
+        return False
 
     # Save data to file
     with open(file, 'w') as f:
         f.write(response.text)
     print(f'Python data for day {day} downloaded.')
+    return True

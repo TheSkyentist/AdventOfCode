@@ -33,14 +33,9 @@ def part2() -> None:
 
     # Get unique
     u = np.intersect1d(x, y)
-    ux, cx = np.unique_counts(x)
-    uy, cy = np.unique_counts(y)
 
     # Compute total
-    total = 0
-    for i in u:
-        nx, ny = cx[ux == i][0], cy[uy == i][0]
-        total += i * nx * ny
+    total = np.sum([i * (x == i).sum() * (y == i).sum() for i in u])
 
     print('Part 2:', total)
 
