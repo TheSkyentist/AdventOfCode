@@ -1,4 +1,12 @@
+# Ignore session cookie
+aoc_*_session.txt
 
-# pixi environments
-.pixi
+# Don't include data
+data/
+
+# Pixi environments
+.pixi/
 *.egg-info
+
+# Cargo build
+target/
