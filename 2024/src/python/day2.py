@@ -58,9 +58,6 @@ def part2() -> None:
         else:
             return True
 
-    for row in data:
-        print(row, isSafeDampened(row))
-
     solution = sum(isSafeDampened(row) for row in data)
 
     print('Part 2:', solution)
