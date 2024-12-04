@@ -3,13 +3,6 @@
 version = 4
 
 [[package]]
-name = "AoC2024"
-version = "0.1.0"
-dependencies = [
- "reqwest",
-]
-
-[[package]]
 name = "addr2line"
 version = "0.24.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -23,6 +16,13 @@ name = "adler2"
 version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "512761e0bb2578dd7380c6baaa0f4ce03e84f95e960231d1dec8bf4d7d6e2627"
+
+[[package]]
+name = "aoc-solve"
+version = "0.1.0"
+dependencies = [
+ "reqwest",
+]
 
 [[package]]
 name = "atomic-waker"

@@ -1,3 +1,3 @@
 pub fn solve() {
-    println!("Solving Day 1...");
+    println!("Not implemented yet.");
 }

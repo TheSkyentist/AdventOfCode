@@ -6,8 +6,9 @@ name = "AoC-2024"
 platforms = ["osx-arm64", "linux-64"]
 
 [tasks]
-solve = {cmd = "bash src/main.sh", depends-on = ["setup"]}
 setup = "mkdir -p data"
+build = "cargo build --release"
+solve = {cmd = "bash src/main.sh", depends-on = ["setup","build"]}
 
 [dependencies]
 bash = ">=5.2.21,<6"

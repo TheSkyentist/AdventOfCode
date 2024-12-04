@@ -1,5 +1,5 @@
 [package]
-name = "AoC2024"
+name = "aoc-solve"
 version = "0.1.0"
 edition = "2021"
 

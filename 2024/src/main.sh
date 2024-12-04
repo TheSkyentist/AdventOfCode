@@ -38,7 +38,7 @@ for (( day=1; day<=DAYS; day++ )); do
     echo 
     julia --project="." src/main.jl $day
     echo
-    cargo run -- $day
+    ./target/release/aoc-solve $day
     echo
 
 
