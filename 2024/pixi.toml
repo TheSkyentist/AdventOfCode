@@ -1,0 +1,20 @@
+[project]
+authors = ["TheSkyentist <raphael.hviding@gmail.com>"]
+channels = ["conda-forge"]
+description = "Advent Code Solving in Python, Julia, and Rust for 2024"
+name = "AoC-2024"
+platforms = ["osx-arm64", "linux-64"]
+
+[tasks]
+solve = "bash src/main.sh"
+
+[dependencies]
+bash = ">=5.2.21,<6"
+coreutils = ">=9.5,<10"
+rust = ">=1.83.0,<1.84"
+python = ">=3.13.0,<3.14"
+juliaup = ">=1.17.10,<2"
+
+[pypi-dependencies]
+requests = ">=2.32.3, <3"
+numpy = ">=2.1.3, <3"
