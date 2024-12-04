@@ -23,7 +23,10 @@ def download(day: int, year: int = 2024) -> None:
         session_cookie = f.read().strip()
 
     # Request data
-    response = requests.get(url, cookies={'session': session_cookie})
+    try:
+        response = requests.get(url, cookies={'session': session_cookie})
+    except Exception as e:
+        print(f'Error downloading Python data for day {day}: {e}')
 
     # Check if response is 404
     if response.status_code == 404:

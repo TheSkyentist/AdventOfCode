@@ -1,10 +1,10 @@
+// Load modules
 mod rust; // Import the `days` module
 use rust::download::download; // Expose the `download` function from the `download` module
 use rust::run_day; // Expose the `run_day` function from the `days` module
 
-
-fn main() {
-    // Parse command-line arguments
+fn main() -> () {
+    // Parse command-line ar xuments
     let args: Vec<String> = std::env::args().collect();
     if args.len() < 2 {
         eprintln!("Usage: {} <day> [--year <year>]", args[0]);

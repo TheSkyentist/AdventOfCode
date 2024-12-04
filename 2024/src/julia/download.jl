@@ -35,7 +35,7 @@ function download(day::Int, year::Int = 2024) :: Nothing
         if isa(e, HTTP.StatusError) && e.response.status == 404
             println("Julia data for day $day not available.")
         else
-            println("Error downloading Julia data for day $day with error $e.")
+            println("Error downloading Julia data for day $day: $e.")
         end
     end
 end
