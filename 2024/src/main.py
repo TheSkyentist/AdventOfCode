@@ -20,7 +20,7 @@ def main():
 
     # Dynamically import the solution module
     try:
-        module_name = f'py.day{args.day}'
+        module_name = f'python.day{args.day}'
         solution_module = importlib.import_module(module_name)
 
         # Call the solve() function
