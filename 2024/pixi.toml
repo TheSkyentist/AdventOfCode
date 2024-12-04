@@ -6,7 +6,8 @@ name = "AoC-2024"
 platforms = ["osx-arm64", "linux-64"]
 
 [tasks]
-solve = "bash src/main.sh"
+solve = {cmd = "bash src/main.sh", depends-on = ["setup"]}
+setup = "mkdir -p data"
 
 [dependencies]
 bash = ">=5.2.21,<6"
