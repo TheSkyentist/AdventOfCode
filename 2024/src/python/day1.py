@@ -1,45 +1,55 @@
 # Import packages
+import io
 import numpy as np
 
 
-def read_input() -> np.ndarray:
+def read_input(generator) -> np.ndarray:
     """
     Read input file
     """
-    return np.genfromtxt('data/input1.py.txt', dtype=int)
+    return np.genfromtxt(generator, dtype=int)
 
 
-def part1() -> None:
+def part1(data: np.ndarray) -> int:
     """
     Part 1
     """
-
-    # Read input
-    data = read_input()
-
-    # Calculate solution
-    solution = np.abs(np.diff(np.sort(data, axis=0), axis=1)).sum()
-
-    print('Part 1:', solution)
+    return np.abs(np.diff(np.sort(data, axis=0), axis=1)).sum()
 
 
-def part2() -> None:
+def part2(data: np.ndarray) -> int:
     """
     Part 2
     """
 
     # Read input
-    x, y = read_input().T
-
-    # Get unique
-    u = np.intersect1d(x, y)
+    x, y = data.T
 
     # Compute total
-    total = np.sum([i * (x == i).sum() * (y == i).sum() for i in u])
+    return np.sum([i * (x == i).sum() * (y == i).sum() for i in np.intersect1d(x, y)])
 
-    print('Part 2:', total)
+
+# Define test data
+test_data_str = """
+3   4
+4   3
+2   5
+1   3
+3   9
+3   3
+"""
 
 
 def solve():
-    part1()
-    part2()
+    # Define test data
+    test_data = read_input(io.StringIO(test_data_str))
+
+    # Test
+    assert part1(test_data) == 11
+    assert part2(test_data) == 31
+
+    # Get input
+    data = read_input('data/input1.py.txt')
+
+    print('Part 1:', part1(data))
+    print('Part 2:', part2(data))

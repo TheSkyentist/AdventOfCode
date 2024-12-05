@@ -3,22 +3,18 @@ import numpy as np
 from itertools import product
 
 
-def read_input() -> str:
+def read_input(file: str) -> str:
     """
     Read input file
     """
-    with open('data/input4.py.txt') as f:
-        lines = f.read().strip().split('\n')
-        return np.array([list(line) for line in lines])
+    lines = file.strip().split('\n')
+    return np.array([list(line) for line in lines])
 
 
-def part1() -> None:
+def part1(grid: np.ndarray) -> int:
     """
     Part 1
     """
-
-    # Read input
-    grid = read_input()
 
     # Define search term
     search = np.array(list('XMAS'))
@@ -54,16 +50,12 @@ def part1() -> None:
                 matches = np.all(windows == sub, axis=1)
                 total += matches.sum()
 
-    print('Part 1:', total)
+    return total
 
-
-def part2() -> None:
+def part2(grid: np.ndarray) -> int:
     """
     Part 2
     """
-
-    # Read input
-    grid = read_input()
 
     # Find indices of all As
     inds = np.argwhere(grid == 'A')
@@ -91,9 +83,35 @@ def part2() -> None:
         if xmas:
             total += 1
 
-    print('Part 2:', total)
+    return total
+
+
+test_data_str = """
+MMMSXXMASM
+MSAMXMSMSA
+AMXSXMAAMM
+MSAMASMSMX
+XMASAMXAMM
+XXAMMXXAMA
+SMSMSASXSS
+SAXAMASAAA
+MAMMMXMMMM
+MXMXAXMASX
+"""
 
 
 def solve():
-    part1()
-    part2()
+
+    # Define test data
+    test_data = read_input(test_data_str)
+
+    # Test
+    assert part1(test_data) == 18
+    assert part2(test_data) == 9
+
+    # Get input
+    with open('data/input4.py.txt') as file:
+        data = read_input(file.read())
+
+    print('Part 1:', part1(data))
+    print('Part 2:', part2(data))

@@ -1,5 +1,5 @@
 # Import your day modules
-from . import day1, day2, day3, day4 # Add more day imports as needed
+from . import day1, day2, day3, day4, day5 # Add more day imports as needed
 from .download import download
 
 # Expose functions
@@ -16,5 +16,7 @@ def run_day(day: int):
             day3.solve()
         case 4:
             day4.solve()
+        case 5:
+            day5.solve()
         case _:
-            print(f'Python solve not implemented for day {day}.')
+            print(f'No Python solution implemented for day {day}.')

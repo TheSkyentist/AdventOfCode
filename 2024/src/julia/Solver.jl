@@ -16,7 +16,7 @@ module Solver
         if day == 1
             Day1.solve()
         else
-            println("No solution implemented for day $day")
+            println("No Julia solution implemented for day $day")
         end
     end
 

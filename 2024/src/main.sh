@@ -5,10 +5,10 @@ days_since() {
     local year=${1:-2024} # Default year to 2024 if not provided
 
     # Get the current date and time in UTC-5
-    now=$(TZ=UTC-5 date +%Y-%m-%dT%H:%M:%S)
+    now=$(TZ=EST date +%Y-%m-%dT%H:%M:%S)
     
     # Get December 1st of the specified year in UTC-5
-    dec_1st=$(TZ=UTC-5 date -d "$year-12-01T00:00:00" +%Y-%m-%dT%H:%M:%S)
+    dec_1st=$(TZ=EST date -d "$year-12-01T00:00:00" +%Y-%m-%dT%H:%M:%S)
 
     # Calculate the difference in days
     diff=$(( ($(date -d "$now" +%s) - $(date -d "$dec_1st" +%s)) / 86400 ))
@@ -36,7 +36,7 @@ for (( day=1; day<=DAYS; day++ )); do
     # Run the scripts
     python src/main.py $day
     echo 
-    julia --project="." src/main.jl $day
+    julia --project="." -O0 --compile=min --startup=no src/main.jl $day
     echo
     ./target/release/aoc-solve $day
     echo
